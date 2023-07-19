@@ -1,3 +1,16 @@
+/*!
+ **********************************************************
+ *@file Os.c
+ *@brief Os mode' heart code
+ **********************************************************
+ *@author LHL
+ *@version 1.0.0
+ *@data 2023.7.17
+ *
+ *
+ **********************************************************
+ **/
+
 #include "OS.h"
 
 volatile unsigned char LittleHeart = 0;
@@ -32,19 +45,19 @@ void OS(void)
 		HeartCnt++;
 		LittleHeart = 0;
 		OS_1ms();
-		if ((HeartCnt % 2) == 0)
+		if ((HeartCnt & (2 -1)) == 0)
 		{
 			OS_2ms();
 		}
-		if ((HeartCnt % 4) == 1)
+		if ((HeartCnt & (4 - 1)) == 1)
 		{
 			OS_4ms1();
 		}
-		if ((HeartCnt % 8) == 3)
+		if ((HeartCnt & (8 - 1)) == 3)
 		{
 			OS_8ms3();
 		}
-		if ((HeartCnt % 8) == 7)
+		if ((HeartCnt & (8 - 1)) == 7)
 		{
 			OS_8ms7();
 		}
