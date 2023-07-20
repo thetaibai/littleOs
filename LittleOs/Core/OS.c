@@ -13,7 +13,7 @@
 
 #include "OS.h"
 
-volatile unsigned char LittleHeart = 0;
+volatile unsigned char LittleHeart = OS_FALSE;
 
 /*!
  **********************************************************
@@ -40,26 +40,18 @@ void OS(void)
 {
 	static unsigned char HeartCnt = 0;
 
-	if(LittleHeart == 1)
+	if(LittleHeart == OS_TRUE)
 	{
 		HeartCnt++;
-		LittleHeart = 0;
-		OS_1ms();
-		if ((HeartCnt & (2 -1)) == 0)
+		LittleHeart = OS_FALSE;
+
+		/* Scheduler % --> & */
+		for (enum TaskIdT i = TaskId_1ms; i < TaskIdNumber; i++)
 		{
-			OS_2ms();
-		}
-		if ((HeartCnt & (4 - 1)) == 1)
-		{
-			OS_4ms1();
-		}
-		if ((HeartCnt & (8 - 1)) == 3)
-		{
-			OS_8ms3();
-		}
-		if ((HeartCnt & (8 - 1)) == 7)
-		{
-			OS_8ms7();
+			if (TaskTable[i].Shifting == (HeartCnt & (TaskTable[i].Cycle - 1)))
+			{
+				TaskTable[i].Task();
+			}
 		}
 	}
 	else

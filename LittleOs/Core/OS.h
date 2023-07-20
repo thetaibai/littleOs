@@ -17,6 +17,10 @@
 /* include */
 #include "Task.h"
 
+/* define */
+#define OS_TRUE		(1)
+#define OS_FALSE	(0)
+
 void LittleHeartFunc(void);
 extern void OS(void);
 

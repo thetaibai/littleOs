@@ -29,10 +29,10 @@ enum TaskIdT
 
 struct TaskTableT
 {
-	enum TaskIdT TaskId;
-	unsigned char Cycle;
-	unsigned char Shifting;
-	void (*Task)(void);
+	enum TaskIdT TaskId;	/* Task Id for loop */
+	unsigned char Cycle;	/* Cycle for loop must be as exponent of 2 because Scheduler */
+	unsigned char Shifting; /* Offset from start */
+	void (*Task)(void);		/* Task Pointer */
 };
 
 extern void OS_1ms(void);
@@ -41,5 +41,7 @@ extern void OS_4ms1(void);
 extern void OS_8ms3(void);
 extern void OS_8ms7(void);
 extern void OS_Idle(void);
+
+extern struct TaskTableT TaskTable[TaskIdNumber];
 
 #endif

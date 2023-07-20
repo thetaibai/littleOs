@@ -22,11 +22,11 @@ void OS_8ms7(void);
 
 struct TaskTableT TaskTable[TaskIdNumber] =
 {
-	{TaskId_1ms, 1, 0, OS_1ms},
-	{TaskId_2ms, 2, 0, OS_2ms},
-	{TaskId_4ms1, 4, 1, OS_4ms1},
-	{TaskId_8ms3, 8, 3, OS_8ms3},
-	{TaskId_8ms7, 8, 7, OS_8ms7}
+	{TaskId_1ms,    1,    0,    OS_1ms},
+	{TaskId_2ms, 	2, 	  0, 	OS_2ms},
+	{TaskId_4ms1, 	4, 	  1, 	OS_4ms1},
+	{TaskId_8ms3, 	8, 	  3, 	OS_8ms3},
+	{TaskId_8ms7, 	8, 	  7, 	OS_8ms7}
 };
 
 /*!
